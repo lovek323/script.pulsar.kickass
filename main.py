@@ -31,3 +31,4 @@ urllib2.urlopen(
     PAYLOAD["callback_url"],
     data=json.dumps(globals()[PAYLOAD["method"]](*PAYLOAD["args"]))
 )
+
