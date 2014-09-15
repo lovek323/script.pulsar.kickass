@@ -16,7 +16,12 @@ def search(query):
     return [{"uri": magnet} for magnet in re.findall(r'magnet:\?[^\'"\s<>\[\]]+', data)]
 
 def search_episode(imdb_id, tvdb_id, name, season, episode):
-    return search("%s S%02dE%02d" % (name, season, episode))
+    response = urllib2.urlopen("http://katproxy.bz/usearch/" + name + "%20category:tv/")
+     data = response.read()
+    if response.headers.get("Content-Encoding", "") == "gzip":
+        import zlib
+        data = zlib.decompressobj(16 + zlib.MAX_WBITS).decompress(data)
+    return [{"uri": magnet} for magnet in re.findall(r'magnet:\?[^\'"\s<>\[\]]+', data)]
 
 
 def search_movie(imdb_id, name, year):
