@@ -5,17 +5,10 @@ import re
 import urllib
 import urllib2
 
-import sys
-import json
-import base64
-import re
-import urllib
-import urllib2
-
 PAYLOAD = json.loads(base64.b64decode(sys.argv[1]))
 
 def search(query):
-    response = urllib2.urlopen("http://katproxy.bz/usearch?q=%s" % urllib.quote_plus(query))
+    response = urllib2.urlopen("http://katproxy.bz/search?q=%s" % urllib.quote_plus(query))
     data = response.read()
     if response.headers.get("Content-Encoding", "") == "gzip":
         import zlib
