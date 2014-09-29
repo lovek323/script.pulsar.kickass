@@ -10,7 +10,7 @@ PREFIX_LOG = 'KICKASS - '
 
 def search(query):
     print PREFIX_LOG + ("Running search query: %s" % query)
-    response = urllib2.urlopen("http://katproxy.bz/search?q=%s" % urllib.quote_plus(query))
+    response = urllib2.urlopen("http://kickass.to/search?q=%s" % urllib.quote_plus(query))
     data = response.read()
     if response.headers.get("Content-Encoding", "") == "gzip":
         import zlib
@@ -25,7 +25,7 @@ def search_episode(imdb_id, tvdb_id, name, season, episode):
 
 
 def search_movie(imdb_id, name, year):
-    response = urllib2.urlopen("http://katproxy.bz/usearch/" + name + "%20category:movies/")
+    response = urllib2.urlopen("http://kickass.to/usearch/" + name + "%20category:movies/")
     data = response.read()
     if response.headers.get("Content-Encoding", "") == "gzip":
         import zlib
